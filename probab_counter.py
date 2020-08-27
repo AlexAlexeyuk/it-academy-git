@@ -22,7 +22,7 @@ class Probability_counter:
       pb2 = amount_of_blue_balls_2 / (amount_of_blue_balls_2 + amount_of_white_balls_2)
     except ZeroDivisionError:
       print(" мы не можем посчитать вероятность если нет шаров")
-    return   (self.p1 * pb1) / (self.p1 * pb1 + self.p2 * pb2), pb1, pb2
+    return   (self.p1 * pb1) / (self.p1 * pb1 + self.p2 * pb2)
    
 
 inst_ = Probability_counter()
