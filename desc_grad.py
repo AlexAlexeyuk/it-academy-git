@@ -1,9 +1,11 @@
-from sympy import Symbol
+from sympy import Symbol, symbols
+
 def determ_amount_var():
   """ Функция.
+  
   возвращает количество пременных во введённой функции
   """
-  f = input('Введите функцию: ')
+  f = input('Введите функцию:F(.....): ')
   dct = {}
   lst = []
   for i in f.replace("e", '').replace("pi", "").split(): # убираем e, т.к. знаем, что это не переменная
@@ -13,8 +15,22 @@ def determ_amount_var():
       lst.append(Symbol(i)) # далее запихиваем в список только те ключи, которые начинаются с буквы ( чтобы получить кол-во переменных в нашей функции)
     else:
       pass
-  variables = tuple(lst)
-  return len(lst), variables
+  variables = lst
+  return [len(lst), variables, [Symbol(f)]]
 
 
+# x ** 2 + y ** 3 + z ** 4
 print(determ_amount_var())
+c = determ_amount_var()
+amount_of_var = c[0]
+variabl = c[1]
+funci = c[2] 
+
+def Func(variabl):
+    
+    return Symbol(str(funci).replace("[", "").replace("]", ""))
+
+print(Func(variabl))
+    
+
+
