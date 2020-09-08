@@ -48,3 +48,17 @@ def derivative(h = .0001):
 
 
 print(derivative())
+
+
+
+def gradient_desc(lambda_ = .1):
+    init_values = np.array([40] * len(variables))
+    for iter in range(100):
+        init_values = init_values - (lambda_ * derivative())
+    return init_values
+
+
+print(gradient_desc())
+min_v = gradient_desc()
+
+print(f(*min_v[0]))
