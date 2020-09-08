@@ -1,9 +1,9 @@
 from sympy import Symbol, symbols, diff
 import numpy as np
-from np import tg, ctg, arccos, arcsin, arctg, arcctg
 import random
 import math
 from math import e, pi, log, sin, cos
+
 
 def determ_amount_var():
   """ Функция.
@@ -11,7 +11,7 @@ def determ_amount_var():
   возвращает количество пременных во введённой функции
   """
   global function
-  function = input('Введите функцию:F(.....): ')
+  function = input('Введите функцию:F(): ')
   dct = {}
   fun = ''
   list_of_var = []
@@ -19,8 +19,7 @@ def determ_amount_var():
     if i.isalpha():
       fun = fun + i # формируем строку с вероятными синволами
     fun = fun.replace('log', '').replace('cos', '').replace('sin', '').\
-    replace('e', '').replace('pi', '').replace('tg', '').replace('arccos', '').replace('arcsin', '').\
-    replace('arctg', '').replace('arcctg', '') #убираем разного рода функции и переменные
+    replace('e', '').replace('pi', '')#убираем разного рода функции и константы
   for i in fun:
     dct[i] = dct.get(i, 0) + 1 # делаем словарь с ключами, чтобы получить только уникальные ключи
   for i in dct.keys():
@@ -37,3 +36,16 @@ print('Внесите в аргументы искомой функции f{0}'.
 
 def f(x, y, z):
     return eval(function)
+
+
+def derivative(h = .0001):
+    lst = []
+    for i in range(len(variables)):
+        lst_of_values  =  [4 for i in range(len(variables))]
+        lst_of_values[i] = lst_of_values[i] + h 
+        lst.append(f(*lst_of_values))
+    lst_of_values  =  [4 for i in range(len(variables))]
+    return  np.array([(np.array(lst) - np.array([f(*lst_of_values)] * len(lst_of_values))) / h])
+
+
+print(derivative())
