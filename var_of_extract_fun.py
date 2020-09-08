@@ -1,5 +1,6 @@
 from sympy import Symbol, symbols, diff
 import numpy as np
+from np import tg, ctg, arccos, arcsin, arctg, arcctg
 import random
 import math
 from math import e, pi, log, sin, cos
@@ -9,7 +10,7 @@ def determ_amount_var():
   
   возвращает количество пременных во введённой функции
   """
-  
+  global function
   function = input('Введите функцию:F(.....): ')
   dct = {}
   fun = ''
@@ -18,7 +19,8 @@ def determ_amount_var():
     if i.isalpha():
       fun = fun + i # формируем строку с вероятными синволами
     fun = fun.replace('log', '').replace('cos', '').replace('sin', '').\
-    replace('e', '').replace('pi', '') #убираем разного рода функции и переменные
+    replace('e', '').replace('pi', '').replace('tg', '').replace('arccos', '').replace('arcsin', '').\
+    replace('arctg', '').replace('arcctg', '') #убираем разного рода функции и переменные
   for i in fun:
     dct[i] = dct.get(i, 0) + 1 # делаем словарь с ключами, чтобы получить только уникальные ключи
   for i in dct.keys():
