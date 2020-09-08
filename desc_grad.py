@@ -37,13 +37,12 @@ def f(x, y):
     return eval(function_for_paste)
 
 def derivative(h = .0001, lambda_ = .0001):
-   lst_of_values  =  [random.randint(4, 4) for val in variables]
+   lst_of_values  = np.array([random.randint(4, 4) for val in variables])
    list_for_delta = []
    for i in lst_of_values:
-       di = i + h
-       list_for_delta.append(di)
-   array_1 = np.array(list_for_delta)
-   array_2 = np.array(lst_of_values)
+       delta_i = i + h
+       list_for_delta.append(delta_i)
+   list_for_delta = np.array(list_for_delta)
    deriv_1 = np.array([(f(array_1[0], array_2[1] ) - f(*array_2)) / h])
    deriv_2 = np.array([(f(array_1[1], array_2[0] ) - f(*array_2)) / h])
    for _ in range(1000):
