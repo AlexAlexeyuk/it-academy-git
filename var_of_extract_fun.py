@@ -44,16 +44,16 @@ def derivative(h = .0001):
         lst_of_values[i] = lst_of_values[i] + h 
         lst.append(f(*lst_of_values))
     lst_of_values  =  [4 for i in range(len(variables))]
-    return  np.array([(np.array(lst) - np.array([f(*lst_of_values)] * len(lst_of_values))) / h])
+    return  (np.array(lst) - np.array([f(*lst_of_values)] * len(lst_of_values))) / h
 
 
-print(derivative())
+
 
 
 
 def gradient_desc(lambda_ = .1):
-    init_values = np.array([40] * len(variables))
-    for iter in range(100):
+    init_values = np.array([100] * len(variables))
+    for iter in range(1000):
         init_values = init_values - (lambda_ * derivative())
     return init_values
 
@@ -61,4 +61,6 @@ def gradient_desc(lambda_ = .1):
 print(gradient_desc())
 min_v = gradient_desc()
 
-print(f(*min_v[0]))
+print(f(*min_v))
+           
+    
