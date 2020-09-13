@@ -19,9 +19,11 @@ sentences = len(dianetics_pron.split('stop_scentence'))
 full_text = dianetics_pron.split('stop_scentence')
 for sentence in full_text:
     lenth_of_sent.append(len(sentence))
-print("Amoutn of sentences is: " + str(sentences), "quantity of words in \
-      every sentence: " +  str(lenth_of_sent) )
+#print("Amoutn of sentences is: " + str(sentences), ", quantity of words in \
+      #every sentence: " +  str(lenth_of_sent) )
 
+series_lenth_of_sentences = pd.Series(lenth_of_sent)
+df = pd.DataFrame(series_lenth_of_sentences, columns=["Lenth of sentences"])
     
                     
 

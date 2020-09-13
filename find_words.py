@@ -13,15 +13,13 @@ from gensim.utils import simple_preprocess
 
 with open('Dianetics.txt', 'r', encoding = 'utf-16') as dianetics:
     dntx = re.sub(r'[^\w\s]+|[\d]+', r'', dianetics.read().strip()).lower()
-     # создали словарь
-    dntx = re.sub(r'\([^()]_*\)', '', dntx).split()
-    
+    dntx = re.sub(r'\([^()]_*\)', '', dntx).split() # убрали всё лишнее из нашего текста
 d = {}
 for i in dntx:
-    if i.isupper():
-        i = i.islower()
-    d[i] = d.get(i, 0) + 1
-print(d)
+    d[i] = d.get(i, 0) + 1 # используя метод get словаря, создали словать 
+    #где ключ - это слово, а значение  = количество повторов
+
+#print(d)
     
 '''texts = [[text] for text in dntx] # создали массив из слов
 dictionary_dian = corpora.Dictionary(texts) # создали словарь из слов
